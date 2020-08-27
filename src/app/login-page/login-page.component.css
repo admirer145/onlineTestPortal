@@ -1,0 +1,17 @@
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+#myContainer{
+  background-color: #040505;
+  font-family: 'Rosario', sans-serif;
+  font-size: 18px;
+}
+#myContainer a:hover{
+  text-decoration: none;
+  color: firebrick;
+}
