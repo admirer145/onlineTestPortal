@@ -29,13 +29,13 @@ export class TestPageComponent implements OnInit {
     if (!this.showAnswers){
       this.manageQuestionsService.saveAnswers(this.currentQuestionNumber, this.currentRadioSelected);
     }
-    console.log(`Current selected is ${this.currentRadioSelected}`);
+    // console.log(`Current selected is ${this.currentRadioSelected}`);
     this.currentQuestionNumber = 1 + parseInt(this.activatedRoute.snapshot.params.questionNumber);
     this.currentRadioSelected = this.manageQuestionsService.getOptionByQuestionId(this.currentQuestionNumber);
     this.router.navigateByUrl('/test/' + this.currentQuestionNumber);
   }
   prevQuestionEventHandler(): void {
-    console.log(`Current selected is ${this.currentRadioSelected}`);
+    // console.log(`Current selected is ${this.currentRadioSelected}`);
     this.currentQuestionNumber =  parseInt(this.activatedRoute.snapshot.params.questionNumber) - 1;
     this.currentRadioSelected = this.manageQuestionsService.getOptionByQuestionId(this.currentQuestionNumber);
     this.router.navigateByUrl('/test/' + this.currentQuestionNumber);

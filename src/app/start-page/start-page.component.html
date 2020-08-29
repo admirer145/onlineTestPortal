@@ -3,16 +3,25 @@
     <div class="col-12">
       <ul class="list-group list-unstyled">
         <li class="list-group-item">
-          1. Total number of questions: 15
+          1. Total number of questions: {{startPageData['totalQuestions']}}
         </li>
         <li class="list-group-item">
-          2. Time Duration : 30 min
+          2. Time Duration : {{startPageData['totalDurationInMin']}} min
         </li>
         <li class="list-group-item">
-          3. You can only participate as an individual.
+          3. Marks per Correct Answer : {{startPageData['marksPerQuestion']}}
         </li>
         <li class="list-group-item">
-          4. Final score will be calculated after plagiarism check. In case of any unfair practice is done, you will be penalised
+          4. Marks per Wrong Answer: {{startPageData['negativeMarksPerQuestion']}}
+        </li>
+        <li class="list-group-item">
+          4. Marks per unattempted question: 0
+        </li>
+        <li class="list-group-item">
+          5. You can only participate as an individual.
+        </li>
+        <li class="list-group-item">
+          6. Final score will be calculated after plagiarism check. In case of any unfair practice is done, you will be penalised
         </li>
       </ul>
     </div>

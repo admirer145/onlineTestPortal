@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import {ManageQuestionsService} from '../manage-questions.service';
 
 @Component({
   selector: 'app-start-page',
@@ -7,7 +8,9 @@ import {Router} from '@angular/router';
   styleUrls: ['./start-page.component.css']
 })
 export class StartPageComponent implements OnInit {
-  constructor(public router: Router) {
+  startPageData: object;
+  constructor(public router: Router, public manageQuestionsService: ManageQuestionsService) {
+    this.startPageData = manageQuestionsService.getStartPageData();
   }
 
   ngOnInit(): void {

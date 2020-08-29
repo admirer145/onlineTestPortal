@@ -18,7 +18,7 @@
         Your Answer: {{this.manageQuestionsService.userAnswers[currentQuestionNumber-1]}}
       </div>
       <div class="row" *ngIf="!this.manageQuestionsService.userAnswers[currentQuestionNumber-1]">
-        Your Answer: Nothing is selected!
+        Your Answer: No Options Selected!
       </div>
     </div>
     <div>
@@ -27,16 +27,20 @@
   </div>
 
   <div class="row">
-    <div class="mt-4 mr-3" >
+    <div class="mt-4 mr-4" >
       <input type="button" class="btn btn-primary" value="PREV" [disabled]="this.currentQuestionNumber==1" (click)="prevQuestionEventHandler()">
     </div>
     <div *ngIf="currentQuestionNumber < questionArray.length;then ifTemplate; else elseTemplate">
     </div>
-    <ng-template class="mt-4" #ifTemplate>
-      <input type="button" class="btn btn-primary btn-sm" value="NEXT" [disabled]="this.currentRadioSelected==-1 && !this.showAnswers" (click)="nextQuestionEventHandler()">
+    <ng-template  #ifTemplate>
+      <div class="mt-4">
+        <input type="button" class="btn btn-primary" value="NEXT" [disabled]="this.currentRadioSelected==-1 && !this.showAnswers" (click)="nextQuestionEventHandler()">
+      </div>
     </ng-template>
-    <ng-template class="mt-4" #elseTemplate>
-      <input type="button" class="btn btn-primary btn-xs" value="SUBMIT" [disabled]="this.currentRadioSelected==-1 || this.showAnswers" (click)="submitEventHandler()">
+    <ng-template #elseTemplate>
+      <div class="mt-4">
+        <input type="button" class="btn btn-primary" value="SUBMIT" [disabled]="this.currentRadioSelected==-1 || this.showAnswers" (click)="submitEventHandler()">
+      </div>
     </ng-template>
   </div>
 </div>

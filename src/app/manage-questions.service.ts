@@ -7,8 +7,19 @@ export class ManageQuestionsService {
   private questionArray: Array<Questions> = new Array();
   userAnswers: Array<number> = new Array();
   showAnswers: boolean;
+  private userTotalAttempted: number;
+  private userTotalCorrect: number;
+  private startPageData: object;
   constructor() {
     this.showAnswers = false;
+    this.userTotalCorrect = 0;
+    this.userTotalAttempted = 0;
+    this.startPageData = {
+      totalQuestions: '15',
+      totalDurationInMin: '15',
+      marksPerQuestion: '4',
+      negativeMarksPerQuestion: '-1',
+    };
     this.questionArray.push(new Questions(1, [' Denoted by triple quotes for providing the specification of certain program elements ', ' Design and implementation of specific functionality to be incorporated into a program ', ' Defines the specification of how it is to be used ', ' Any program that reuses code '], ' Which of these definitions correctly describes a module? ', 2));
     this.questionArray.push(new Questions(2, [' Provides a means of reuse of program code ', ' Provides a means of dividing up tasks ', ' Provides a means of reducing the size of the program ', ' Provides a means of testing individual parts of the program '], ' Which of the following is not an advantage of using modules? ', 3));
     this.questionArray.push(new Questions(3, [' Client ', ' Docstring ', ' Interface ', ' Modularity '], ' Program code making use of a given module is called a ______ of the module  ', 1));
@@ -43,8 +54,14 @@ export class ManageQuestionsService {
   calculateResult(): number{
     let res = 0;
     for (let i = 0 ; i < this.questionArray.length; i++){
-      if (this.questionArray[i].answer === this.userAnswers[i]) {
-        res += 1;
+      if (this.userAnswers[i]) {
+        if (this.questionArray[i].answer === this.userAnswers[i]) {
+          res += parseInt(this.startPageData['marksPerQuestion']);
+          this.userTotalCorrect += 1;
+        }else{
+          res += parseInt(this.startPageData['negativeMarksPerQuestion']);
+        }
+        this.userTotalAttempted += 1;
       }
     }
     return res;
@@ -64,5 +81,19 @@ export class ManageQuestionsService {
     }
     return this.userAnswers[questionId - 1] - 1;
   }
-
+  getTotalCorrect(): number{
+    return this.userTotalCorrect;
+  }
+  getTotalAttempted(): number{
+    return this.userTotalAttempted;
+  }
+  getStartPageData(): object{
+    return this.startPageData;
+  }
+  resetUserData(): void{
+    this.showAnswers = false;
+    this.userTotalCorrect = 0;
+    this.userTotalAttempted = 0;
+    this.userAnswers = new Array<number>();
+  }
 }

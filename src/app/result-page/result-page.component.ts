@@ -9,8 +9,12 @@ import {Router} from '@angular/router';
 })
 export class ResultPageComponent implements OnInit {
   finalResult: number;
+  totalAttempted: number;
+  totalCorrect: number;
   constructor(public manageQuestionsService: ManageQuestionsService, public router: Router) {
     this.finalResult = manageQuestionsService.calculateResult();
+    this.totalAttempted = manageQuestionsService.getTotalAttempted();
+    this.totalCorrect = manageQuestionsService.getTotalCorrect();
   }
 
   ngOnInit(): void {

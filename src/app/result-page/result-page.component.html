@@ -1,9 +1,38 @@
 <div class="container">
-  <div class="align-self-center bg-dark text-white text-center ">
-    Your Score is : {{finalResult}}
+  <div class="row">
+    <div class="col-md-5 offset-md-3 col-sm-10 offset-sm-1 bg-dark text-white ">
+      <div class="m-2">
+        Your Score is : {{finalResult}}
+      </div>
+    </div>
   </div>
-  <div class="mt-4 align-self-center bg-dark text-white text-center ">
-    Wanna see the answers ?
-    <input type="button" value="click here" class="btn btn-primary" (click)="showFinalAnswers()"/>
+  <div class="row">
+    <div class="col-md-5 offset-md-3 col-sm-10 offset-sm-1  bg-dark text-white ">
+      <div class="m-2">
+        Questions attempted : {{totalAttempted}}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-5 offset-md-3 col-sm-10 offset-sm-1 bg-dark text-white ">
+      <div class="m-2">
+        Correct answers : {{totalCorrect}}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-5 offset-md-3 col-sm-10 offset-sm-1 bg-dark text-white ">
+      <div class="m-2">
+        Wrong answers : {{totalAttempted-totalCorrect}}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-5 offset-md-3 col-sm-10 offset-sm-1 bg-dark text-white ">
+      <div class="m-2">
+        Want to analyse more ?
+        <input type="button" value="click here" class="btn btn-primary" (click)="showFinalAnswers()"/>
+      </div>
+    </div>
   </div>
 </div>
