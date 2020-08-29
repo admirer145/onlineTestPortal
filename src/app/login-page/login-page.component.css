@@ -6,12 +6,3 @@ hr {
   margin: 1em 0;
   padding: 0;
 }
-#myContainer{
-  background-color: #040505;
-  font-family: 'Rosario', sans-serif;
-  font-size: 18px;
-}
-#myContainer a:hover{
-  text-decoration: none;
-  color: firebrick;
-}

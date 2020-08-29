@@ -1,10 +1,23 @@
-/*#content{*/
-/*  !*background-color: #212529;*!*/
-/*  height: 80vh;*/
-/*  margin-bottom: 10%;*/
-/*  margin-top: 10%;*/
-/*}*/
+#myContainer{
+  background-image: url("../assets/homePage1.jpg");
+  min-height: 680px;
+  font-family: 'Rosario', sans-serif;
+  font-size: 1.375rem;
+}
 
-/*#container{*/
-/*  background-color: #212529;*/
-/*}*/
+#myContainer a:hover{
+  text-decoration: none;
+  color: firebrick;
+}
+#header{
+  min-height: 90px;
+}
+
+#content{
+  min-height: 500px;
+  height: 80%;
+}
+
+#footer{
+  min-height: 90px;
+}

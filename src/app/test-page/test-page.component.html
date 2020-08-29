@@ -1,60 +1,42 @@
 <div class="container mt-5 mb-5">
   <div class="row">
-    <div class="col-12">
+    <div class="col-12 text-white font-weight-bold ">
       {{currentQuestionNumber}}. {{questionArray[currentQuestionNumber-1].description}}
     </div>
   </div>
-  <div *ngFor="let option of questionArray[currentQuestionNumber-1].options; let indx = index">
-    <div class="row mt-2">
-      <div class="col-12">
-        <input type="radio" (change) = "onClickRadioButton(indx)" [checked]="this.currentRadioSelected==indx"/>
+
+  <ul class="row mt-4 mb-4 list-group" *ngFor="let option of questionArray[currentQuestionNumber-1].options; let indx = index">
+      <li class="col-12 list-group-item">
+        <input type="radio" (change) = "onClickRadioButton(indx)" [checked]="currentRadioSelected==indx" [disabled]="this.showAnswers" />
         {{option}}
+      </li>
+  </ul>
+
+  <div class="row mt-4 mb-4" *ngIf="this.showAnswers">
+    <div class="col-12 text-lg-left">
+      <div class="row" *ngIf="this.manageQuestionsService.userAnswers[currentQuestionNumber-1]">
+        Your Answer: {{this.manageQuestionsService.userAnswers[currentQuestionNumber-1]}}
       </div>
+      <div class="row" *ngIf="!this.manageQuestionsService.userAnswers[currentQuestionNumber-1]">
+        Your Answer: Nothing is selected!
+      </div>
+    </div>
+    <div>
+      Correct Answer: {{this.manageQuestionsService.getResultByQuestionId(currentQuestionNumber)}}
     </div>
   </div>
 
-<!--  <div class="row form-check">-->
-<!--    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"-->
-<!--           [value] = "questionArray[currentQuestionNumber-1].options[0]"-->
-<!--           (change) = "changeRadioEventHandler(0)" [checked]="this.currentRadioSelected==0">-->
-<!--    <label class="form-check-label" for="exampleRadios1">-->
-<!--      {{questionArray[currentQuestionNumber-1].options[0]}}-->
-<!--    </label>-->
-<!--  </div>-->
-<!--  <div class="row form-check">-->
-<!--    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2"-->
-<!--           [value] = "questionArray[currentQuestionNumber-1].options[1]"-->
-<!--            (change) = "changeRadioEventHandler(1)" [checked]="this.currentRadioSelected==1" >-->
-<!--    <label class="form-check-label" for="exampleRadios2">-->
-<!--      {{questionArray[currentQuestionNumber-1].options[1]}}-->
-<!--    </label>-->
-<!--  </div>-->
-<!--  <div class="row form-check">-->
-<!--    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3"-->
-<!--           [value] = "questionArray[currentQuestionNumber-1].options[2]"-->
-<!--           (change) = "changeRadioEventHandler(2)" [checked]="this.currentRadioSelected==2">-->
-<!--    <label class="form-check-label" for="exampleRadios3">-->
-<!--      {{questionArray[currentQuestionNumber-1].options[2]}}-->
-<!--    </label>-->
-<!--  </div>-->
-<!--  <div class="row form-check">-->
-<!--    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios4"-->
-<!--           [value] = "questionArray[currentQuestionNumber-1].options[3]"-->
-<!--           (change) = "changeRadioEventHandler(3)" [checked]="this.currentRadioSelected==3">-->
-<!--    <label class="form-check-label" for="exampleRadios4">-->
-<!--      {{questionArray[currentQuestionNumber-1].options[3]}}-->
-<!--    </label>-->
-<!--  </div>-->
-  <div class="row mt-4 mb-4">
-    Selected Answer: {{this.currentRadioSelected}}
+  <div class="row">
+    <div class="mt-4 mr-3" >
+      <input type="button" class="btn btn-primary" value="PREV" [disabled]="this.currentQuestionNumber==1" (click)="prevQuestionEventHandler()">
+    </div>
+    <div *ngIf="currentQuestionNumber < questionArray.length;then ifTemplate; else elseTemplate">
+    </div>
+    <ng-template class="mt-4" #ifTemplate>
+      <input type="button" class="btn btn-primary btn-sm" value="NEXT" [disabled]="this.currentRadioSelected==-1 && !this.showAnswers" (click)="nextQuestionEventHandler()">
+    </ng-template>
+    <ng-template class="mt-4" #elseTemplate>
+      <input type="button" class="btn btn-primary btn-xs" value="SUBMIT" [disabled]="this.currentRadioSelected==-1 || this.showAnswers" (click)="submitEventHandler()">
+    </ng-template>
   </div>
-
-  <div *ngIf="currentQuestionNumber < questionArray.length;then ifTemplate; else elseTemplate">
-  </div>
-  <ng-template class="mt-3" #ifTemplate>
-    <input type="button" class="btn btn-primary" value="NEXT" (click)="nextQuestionEventHandler()">
-  </ng-template>
-  <ng-template class="mt-3" #elseTemplate>
-    <input type="button" class="btn btn-primary" value="SUBMIT" (click)="submitEventHandler()">
-  </ng-template>
 </div>

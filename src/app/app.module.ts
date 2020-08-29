@@ -6,8 +6,10 @@ import { AppComponent } from './app.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { StartPageComponent } from './start-page/start-page.component';
 import { TestPageComponent } from './test-page/test-page.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ResultPageComponent } from './result-page/result-page.component';
+import { TempFormValidationComponentComponent } from './temp-form-validation-component/temp-form-validation-component.component';
+import {ManageQuestionsService} from './manage-questions.service';
 
 @NgModule({
   declarations: [
@@ -15,14 +17,16 @@ import { ResultPageComponent } from './result-page/result-page.component';
     LoginPageComponent,
     StartPageComponent,
     TestPageComponent,
-    ResultPageComponent
+    ResultPageComponent,
+    TempFormValidationComponentComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule
-  ],
-  providers: [],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        FormsModule
+    ],
+  providers: [ManageQuestionsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

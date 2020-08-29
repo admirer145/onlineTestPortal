@@ -1,17 +1,22 @@
-<div class="container" id="myContainer">
-  <!-- Content -->
+<div class="container">
   <div class="row">
-    <div class="card mx-auto bg-white text-dark col-lg-6 col-md-8 col-sm-12 mt-5 mb-5">
+    <div class="card m-auto bg-white text-dark col-lg-6 col-md-8 col-sm-12 ">
       <div class="card-header text-center row-3" style="font-size: 1.875em">
         Sign In
       </div>
       <div class="card-body row-5 ">
         <div class="form">
           <div class="form-group">
-            <input class="form-control" type="email" placeholder="Email" required>
+            <input class="form-control" type="email" placeholder="Email" name="email">
+            <div *ngIf="loginForm.get('email').errors">
+              *Email is required
+            </div>
           </div>
           <div class="form-group">
-            <input class="form-control" type="password" placeholder="Password" required>
+            <input class="form-control" type="password" placeholder="Password" name="password">
+            <div *ngIf="loginForm.get('password').errors">
+              *Password is required
+            </div>
           </div>
           <div class="mb-3">
             <a href="#">Forgot your Password ?</a>

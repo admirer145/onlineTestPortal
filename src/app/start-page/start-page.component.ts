@@ -7,7 +7,8 @@ import {Router} from '@angular/router';
   styleUrls: ['./start-page.component.css']
 })
 export class StartPageComponent implements OnInit {
-  constructor(public router: Router) { }
+  constructor(public router: Router) {
+  }
 
   ngOnInit(): void {
   }
