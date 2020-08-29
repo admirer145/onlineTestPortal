@@ -21,4 +21,7 @@ export class LoginPageComponent implements OnInit {
   loginToStartPage(): void{
     this.router.navigateByUrl('/start');
   }
+  loginToRegisterPage(): void{
+    this.router.navigateByUrl('/register');
+  }
 }
