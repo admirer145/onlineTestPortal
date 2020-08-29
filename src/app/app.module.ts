@@ -8,8 +8,8 @@ import { StartPageComponent } from './start-page/start-page.component';
 import { TestPageComponent } from './test-page/test-page.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ResultPageComponent } from './result-page/result-page.component';
-import { TempFormValidationComponentComponent } from './temp-form-validation-component/temp-form-validation-component.component';
 import {ManageQuestionsService} from './manage-questions.service';
+import { RegisterPageComponent } from './register-page/register-page.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,7 @@ import {ManageQuestionsService} from './manage-questions.service';
     StartPageComponent,
     TestPageComponent,
     ResultPageComponent,
-    TempFormValidationComponentComponent,
+    RegisterPageComponent,
   ],
     imports: [
         BrowserModule,

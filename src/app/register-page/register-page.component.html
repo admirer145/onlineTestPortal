@@ -1,0 +1,43 @@
+<div class="container bg-dark">
+  <div class="row justify-content-center">
+    <div class="col-6 mt-4">
+      <div class="text-success">
+        <h4 class="text-center">Registration Form</h4>
+      </div>
+      <form #registerForm='ngForm' (ngSubmit) = 'registerForm.form.valid && submitEventHandler()' >
+        <div class="form-group text-danger">
+          <input type="text" placeholder="Enter the name" class="form-control" name="txtName"
+                 [(ngModel)]="userDetails.name" required #txtName="ngModel">
+          <div *ngIf="txtName.errors?.required && (txtName.touched || !txtName.pristine)">
+            <span class="text-danger">*</span>Name is Required
+          </div>
+        </div>
+        <div class="form-group text-danger">
+          <input type="text" placeholder="Enter the password" class="form-control" name="txtPassword"
+                 [(ngModel)]="userDetails.password" required #txtPassword="ngModel">
+          <div *ngIf="txtPassword.errors?.required && (txtPassword.touched || !txtPassword.pristine)">
+            <span class="text-danger">*</span>Password is Required
+          </div>
+        </div>
+        <div class="form-group text-danger">
+          <input type="text" placeholder="Enter the email" class="form-control" name="txtEmailId"
+                 [(ngModel)]="userDetails.emailid" required #txtEmailId="ngModel">
+          <div *ngIf="txtEmailId.errors?.required && (txtEmailId.touched || !txtEmailId.pristine)">
+            <span class="text-danger">*</span>Email is Required
+          </div>
+        </div>
+        <div class="form-group text-danger">
+          <input type="text" placeholder="Enter the age" class="form-control" name="txtAge"
+                 [(ngModel)]="userDetails.age" required #txtAge="ngModel">
+          <div *ngIf="txtAge.errors?.required && (txtAge.touched || !txtAge.pristine)">
+            <span class="text-danger">*</span>Age is Required
+          </div>
+        </div>
+        <div class="row justify-content-center mb-4">
+          <input class="col-4 form-control bg-primary text-white" type="submit" value="SUBMIT"/>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
