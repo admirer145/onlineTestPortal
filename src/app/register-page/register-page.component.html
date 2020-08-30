@@ -1,44 +1,162 @@
-<div class="container bg-dark">
-  <div class="row justify-content-center">
-    <div class="col-6 mt-4">
-      <div class="text-success">
-        <h4 class="text-center">Registration Form</h4>
-      </div>
-      <form #registerForm='ngForm' (ngSubmit) = 'registerForm.form.valid && submitEventHandler()' >
-        <div class="form-group text-danger">
-          <input type="text" placeholder="Enter the name" class="form-control" name="txtName"
-                 [(ngModel)]="userDetails.name" required #txtName="ngModel">
-          <div *ngIf="txtName.errors?.required && (txtName.touched || !txtName.pristine)">
-            <span class="text-danger">*</span>Name is Required
-          </div>
-        </div>
-        <div class="form-group text-danger">
-          <input type="text" placeholder="Enter the email" class="form-control" name="txtEmailId"
-                 [(ngModel)]="userDetails.emailid" required #txtEmailId="ngModel">
-          <div *ngIf="txtEmailId.errors?.required && (txtEmailId.touched || !txtEmailId.pristine)">
-            <span class="text-danger">*</span>Email is Required
-          </div>
-        </div>
-        <div class="form-group text-danger">
-          <input type="text" placeholder="Enter the password" class="form-control" name="txtPassword"
-                 [(ngModel)]="userDetails.password" required #txtPassword="ngModel">
-          <div *ngIf="txtPassword.errors?.required && (txtPassword.touched || !txtPassword.pristine)">
-            <span class="text-danger">*</span>Password is Required
-          </div>
-        </div>
-
-        <div class="form-group text-danger">
-          <input type="text" placeholder="Enter the age" class="form-control" name="txtAge"
-                 [(ngModel)]="userDetails.age" required #txtAge="ngModel">
-          <div *ngIf="txtAge.errors?.required && (txtAge.touched || !txtAge.pristine)">
-            <span class="text-danger">*</span>Age is Required
-          </div>
-        </div>
-        <div class="row justify-content-center mb-4">
-          <input class="col-4 form-control bg-primary text-white" type="submit" value="SUBMIT"/>
-        </div>
-      </form>
-
+<div class="container bg-white">
+    <div class="text-dark">
+      <h3 class="text-center mt-3 mb-3">Registration Form</h3>
     </div>
-  </div>
+    <form [formGroup]="userDetails" (ngSubmit)="submitEventHandler()">
+      <div class="row">
+        <div class="col-6">
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" formControlName="firstName" class="form-control" id="firstName"/>
+            <div class="alert alert-danger" *ngIf="userDetails.get('firstName').touched && userDetails.get('firstName').invalid">
+              <p *ngIf="userDetails.get('firstName').errors.required">
+                First Name is required
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" formControlName="lastName" class="form-control" id="lastName"/>
+            <div class="alert alert-danger" *ngIf="userDetails.get('lastName').touched && userDetails.get('lastName').invalid">
+              <p *ngIf="userDetails.get('lastName').errors.required">
+                Last Name is required
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <div class="form-group">
+            <label> Password </label>
+            <input type="password" formControlName="password" class="form-control"/>
+            <div class="alert alert-danger" *ngIf="userDetails.get('password').touched && userDetails.get('password').invalid">
+              <p *ngIf="userDetails.get('password').errors.required">
+                Password is required
+              </p>
+              <p *ngIf="userDetails.get('password').errors.passwordValidation">
+                Password must contain 1 lowercase, 1 uppercase, 1 number and 1 special character
+              </p>
+              <p *ngIf="userDetails.get('password').errors.minlength">
+                Password must contain minimum 6 letters
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group">
+            <label> Age </label>
+            <input type="number" formControlName="age" class="form-control"/>
+            <div class="alert alert-danger" *ngIf="userDetails.get('age').touched && userDetails.get('age').invalid">
+              <p *ngIf="userDetails.get('age').errors.required">
+                Age is required
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <div class="form-group">
+            <label> Phone </label>
+            <input type="number" formControlName="phone" class="form-control"/>
+            <div class="alert alert-danger" *ngIf="userDetails.get('phone').touched && userDetails.get('phone').invalid">
+              <p *ngIf="userDetails.get('phone').errors.required">
+                Phone number is required
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group">
+            <label> Email </label>
+            <input type="text" formControlName="email" class="form-control"/>
+            <div class="alert alert-danger" *ngIf="userDetails.get('email').touched && userDetails.get('email').invalid">
+              <p *ngIf="userDetails.get('email').errors.required">
+                Email is required
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <div class="form-group">
+            <label> College </label>
+            <input type="text" formControlName="college" class="form-control"/>
+            <div class="alert alert-danger" *ngIf="userDetails.get('college').touched && userDetails.get('college').invalid">
+              <p *ngIf="userDetails.get('college').errors.required">
+                College Name is required
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group">
+            <label> CGPA </label>
+            <input type="number" formControlName="cgpa" class="form-control"/>
+            <div class="alert alert-danger" *ngIf="userDetails.get('cgpa').touched && userDetails.get('cgpa').invalid">
+              <p *ngIf="userDetails.get('cgpa').errors.required">
+                CGPA is required
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <fieldset formGroupName="address">
+        <legend>Address</legend>
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group">
+              <label>Street</label>
+              <input type="text" formControlName="street" class="form-control"/>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group">
+              <label>City</label>
+              <input type="text" formControlName="city" class="form-control"/>
+              <div class="alert alert-danger" *ngIf="userDetails.get('address').get('city').touched && userDetails.get('address').get('city').invalid">
+                <p *ngIf="userDetails.get('address').get('city').errors.required">
+                  Email is required
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group">
+              <label>State</label>
+              <input type="text" formControlName="state" class="form-control"/>
+              <div class="alert alert-danger" *ngIf="userDetails.get('address').get('state').touched && userDetails.get('address').get('state').invalid">
+                <p *ngIf="userDetails.get('address').get('state').errors.required">
+                  State is required
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group">
+              <label>Zip Code</label>
+              <input type="number" formControlName="zipcode" class="form-control"/>
+              <div class="alert alert-danger" *ngIf="userDetails.get('address').get('zipcode').touched && userDetails.get('address').get('zipcode').invalid">
+                <p *ngIf="userDetails.get('address').get('zipcode').errors.required">
+                  ZipCode is required
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+      <div class="row mb-3 mt-3">
+        <div class="col-4 offset-4">
+          <div class="justify-content-center mb-4">
+            <input class="form-control bg-primary text-white" [disabled]="!userDetails.valid"  type="submit" value="SUBMIT"/>
+          </div>
+        </div>
+      </div>
+    </form>
 </div>
