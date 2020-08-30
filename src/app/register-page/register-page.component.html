@@ -37,7 +37,7 @@
                 Password is required
               </p>
               <p *ngIf="userDetails.get('password').errors.passwordValidation">
-                Password must contain 1 lowercase, 1 uppercase, 1 number and 1 special character
+                Password must contains atleast 1 lowercase, 1 uppercase, 1 number and 1 special character
               </p>
               <p *ngIf="userDetails.get('password').errors.minlength">
                 Password must contain minimum 6 letters
@@ -120,7 +120,7 @@
               <input type="text" formControlName="city" class="form-control"/>
               <div class="alert alert-danger" *ngIf="userDetails.get('address').get('city').touched && userDetails.get('address').get('city').invalid">
                 <p *ngIf="userDetails.get('address').get('city').errors.required">
-                  Email is required
+                  City Name is required
                 </p>
               </div>
             </div>
@@ -133,7 +133,7 @@
               <input type="text" formControlName="state" class="form-control"/>
               <div class="alert alert-danger" *ngIf="userDetails.get('address').get('state').touched && userDetails.get('address').get('state').invalid">
                 <p *ngIf="userDetails.get('address').get('state').errors.required">
-                  State is required
+                  State Name is required
                 </p>
               </div>
             </div>
