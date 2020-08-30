@@ -8,11 +8,11 @@ import {Router} from '@angular/router';
 })
 export class RegisterPageComponent implements OnInit {
   userDetails;
-  constructor(public router:Router) {
+  constructor(public router: Router) {
     this.userDetails = {
       name : '',
-      password : '',
       emailid : '',
+      password : '',
       age : ''
     };
   }
