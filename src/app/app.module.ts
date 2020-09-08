@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import {HttpClientModule} from "@angular/common/http";
+import {TalkWithDbService} from "./talk-with-db.service";
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginPageComponent } from './login-page/login-page.component';
@@ -24,9 +27,10 @@ import { RegisterPageComponent } from './register-page/register-page.component';
         BrowserModule,
         AppRoutingModule,
         ReactiveFormsModule,
-        FormsModule
+        FormsModule,
+        HttpClientModule
     ],
-  providers: [ManageQuestionsService],
+  providers: [ManageQuestionsService, TalkWithDbService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
